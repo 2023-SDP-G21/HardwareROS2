@@ -12,6 +12,8 @@
   - [ ] ultrasonic sensor node
   - [ ] IMU sensor node
   - [ ] motor actuator node
+- [ ] automate everything with ros launch
+- [ ] system testing
 
 
 ## Command List
