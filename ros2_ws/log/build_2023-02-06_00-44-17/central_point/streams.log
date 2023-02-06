@@ -1,0 +1,35 @@
+[3.496s] Invoking command in '/home/you/Env/ros2_ws/src/central_point': PYTHONPATH=/home/you/Env/ros2_ws/build/central_point/prefix_override:/home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/central_point build --build-base /home/you/Env/ros2_ws/build/central_point/build install --record /home/you/Env/ros2_ws/build/central_point/install.log --single-version-externally-managed
+[4.803s] running egg_info
+[4.805s] creating ../../build/central_point/central_point.egg-info
+[4.806s] writing ../../build/central_point/central_point.egg-info/PKG-INFO
+[4.808s] writing dependency_links to ../../build/central_point/central_point.egg-info/dependency_links.txt
+[4.808s] writing entry points to ../../build/central_point/central_point.egg-info/entry_points.txt
+[4.809s] writing requirements to ../../build/central_point/central_point.egg-info/requires.txt
+[4.810s] writing top-level names to ../../build/central_point/central_point.egg-info/top_level.txt
+[4.810s] writing manifest file '../../build/central_point/central_point.egg-info/SOURCES.txt'
+[4.818s] reading manifest file '../../build/central_point/central_point.egg-info/SOURCES.txt'
+[4.822s] writing manifest file '../../build/central_point/central_point.egg-info/SOURCES.txt'
+[4.822s] running build
+[4.823s] running build_py
+[4.824s] creating /home/you/Env/ros2_ws/build/central_point/build
+[4.824s] creating /home/you/Env/ros2_ws/build/central_point/build/lib
+[4.825s] creating /home/you/Env/ros2_ws/build/central_point/build/lib/central_point
+[4.826s] copying central_point/__init__.py -> /home/you/Env/ros2_ws/build/central_point/build/lib/central_point
+[4.826s] running install
+[4.827s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[4.828s]   warnings.warn(
+[4.829s] running install_lib
+[4.833s] creating /home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages/central_point
+[4.833s] copying /home/you/Env/ros2_ws/build/central_point/build/lib/central_point/__init__.py -> /home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages/central_point
+[4.836s] byte-compiling /home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages/central_point/__init__.py to __init__.cpython-310.pyc
+[4.837s] running install_data
+[4.841s] creating /home/you/Env/ros2_ws/install/central_point/share/ament_index
+[4.841s] creating /home/you/Env/ros2_ws/install/central_point/share/ament_index/resource_index
+[4.842s] creating /home/you/Env/ros2_ws/install/central_point/share/ament_index/resource_index/packages
+[4.842s] copying resource/central_point -> /home/you/Env/ros2_ws/install/central_point/share/ament_index/resource_index/packages
+[4.843s] copying package.xml -> /home/you/Env/ros2_ws/install/central_point/share/central_point
+[4.843s] running install_egg_info
+[4.850s] Copying ../../build/central_point/central_point.egg-info to /home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages/central_point-0.0.0-py3.10.egg-info
+[4.856s] running install_scripts
+[4.946s] writing list of installed files to '/home/you/Env/ros2_ws/build/central_point/install.log'
+[5.069s] Invoked command in '/home/you/Env/ros2_ws/src/central_point' returned '0': PYTHONPATH=/home/you/Env/ros2_ws/build/central_point/prefix_override:/home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/central_point build --build-base /home/you/Env/ros2_ws/build/central_point/build install --record /home/you/Env/ros2_ws/build/central_point/install.log --single-version-externally-managed

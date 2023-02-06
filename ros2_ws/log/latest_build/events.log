@@ -1,0 +1,77 @@
+[0.000000] (-) TimerEvent: {}
+[0.001686] (central_point) JobQueued: {'identifier': 'central_point', 'dependencies': OrderedDict()}
+[0.002429] (central_point) JobStarted: {'identifier': 'central_point'}
+[0.098958] (-) TimerEvent: {}
+[0.199633] (-) TimerEvent: {}
+[0.300447] (-) TimerEvent: {}
+[0.401218] (-) TimerEvent: {}
+[0.501950] (-) TimerEvent: {}
+[0.602607] (-) TimerEvent: {}
+[0.703287] (-) TimerEvent: {}
+[0.803962] (-) TimerEvent: {}
+[0.904725] (-) TimerEvent: {}
+[1.005357] (-) TimerEvent: {}
+[1.105997] (-) TimerEvent: {}
+[1.206639] (-) TimerEvent: {}
+[1.307279] (-) TimerEvent: {}
+[1.408008] (-) TimerEvent: {}
+[1.509425] (-) TimerEvent: {}
+[1.610099] (-) TimerEvent: {}
+[1.710925] (-) TimerEvent: {}
+[1.811976] (-) TimerEvent: {}
+[1.912708] (-) TimerEvent: {}
+[2.013414] (-) TimerEvent: {}
+[2.114087] (-) TimerEvent: {}
+[2.214779] (-) TimerEvent: {}
+[2.315417] (-) TimerEvent: {}
+[2.416041] (-) TimerEvent: {}
+[2.516803] (-) TimerEvent: {}
+[2.617563] (-) TimerEvent: {}
+[2.718219] (-) TimerEvent: {}
+[2.818891] (-) TimerEvent: {}
+[2.919640] (-) TimerEvent: {}
+[3.020384] (-) TimerEvent: {}
+[3.121338] (-) TimerEvent: {}
+[3.199142] (central_point) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/central_point', 'build', '--build-base', '/home/you/Env/ros2_ws/build/central_point/build', 'install', '--record', '/home/you/Env/ros2_ws/build/central_point/install.log', '--single-version-externally-managed'], 'cwd': '/home/you/Env/ros2_ws/src/central_point', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'en_GB:en', 'USER': 'you', 'SSH_CLIENT': '10.189.132.147 57645 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/you/.vscode-server/bin/97dec172d3256f8ca4bfb2143f3f76b503ca0534/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'BROWSER': '/home/you/.vscode-server/bin/97dec172d3256f8ca4bfb2143f3f76b503ca0534/bin/helpers/browser.sh', 'MOTD_SHOWN': 'pam', 'HOME': '/home/you', 'OLDPWD': '/home/you/Env/ros2_ws/src', 'TERM_PROGRAM_VERSION': '1.74.3', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-6d6c81f1-205e-495c-88b1-f55620e689b8.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/home/you/.vscode-server/bin/97dec172d3256f8ca4bfb2143f3f76b503ca0534/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/you/.vscode-server/bin/97dec172d3256f8ca4bfb2143f3f76b503ca0534/node', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'COLCON_PREFIX_PATH': '/home/you/Env/ros2_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'you', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '2', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/home/you/.vscode-server/bin/97dec172d3256f8ca4bfb2143f3f76b503ca0534/bin/remote-cli:/home/you/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-57ab02d5b5.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/home/you/Env/ros2_ws/install/central_point:/opt/ros/humble', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/you/Env/ros2_ws/build/central_point', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '10.189.132.147 57645 10.189.132.105 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/you/Env/ros2_ws/build/central_point/prefix_override:/home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages:/home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[3.221509] (-) TimerEvent: {}
+[3.322244] (-) TimerEvent: {}
+[3.422938] (-) TimerEvent: {}
+[3.523626] (-) TimerEvent: {}
+[3.624422] (-) TimerEvent: {}
+[3.725519] (-) TimerEvent: {}
+[3.826214] (-) TimerEvent: {}
+[3.926900] (-) TimerEvent: {}
+[4.027540] (-) TimerEvent: {}
+[4.128220] (-) TimerEvent: {}
+[4.229011] (-) TimerEvent: {}
+[4.329697] (-) TimerEvent: {}
+[4.430393] (-) TimerEvent: {}
+[4.506844] (central_point) StdoutLine: {'line': b'running egg_info\n'}
+[4.509981] (central_point) StdoutLine: {'line': b'writing ../../build/central_point/central_point.egg-info/PKG-INFO\n'}
+[4.511149] (central_point) StdoutLine: {'line': b'writing dependency_links to ../../build/central_point/central_point.egg-info/dependency_links.txt\n'}
+[4.512310] (central_point) StdoutLine: {'line': b'writing entry points to ../../build/central_point/central_point.egg-info/entry_points.txt\n'}
+[4.513108] (central_point) StdoutLine: {'line': b'writing requirements to ../../build/central_point/central_point.egg-info/requires.txt\n'}
+[4.513771] (central_point) StdoutLine: {'line': b'writing top-level names to ../../build/central_point/central_point.egg-info/top_level.txt\n'}
+[4.522398] (central_point) StdoutLine: {'line': b"reading manifest file '../../build/central_point/central_point.egg-info/SOURCES.txt'\n"}
+[4.526687] (central_point) StdoutLine: {'line': b"writing manifest file '../../build/central_point/central_point.egg-info/SOURCES.txt'\n"}
+[4.527350] (central_point) StdoutLine: {'line': b'running build\n'}
+[4.527872] (central_point) StdoutLine: {'line': b'running build_py\n'}
+[4.529462] (central_point) StdoutLine: {'line': b'running install\n'}
+[4.530119] (central_point) StderrLine: {'line': b'/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[4.530670] (-) TimerEvent: {}
+[4.531035] (central_point) StderrLine: {'line': b'  warnings.warn(\n'}
+[4.531797] (central_point) StdoutLine: {'line': b'running install_lib\n'}
+[4.538718] (central_point) StdoutLine: {'line': b'running install_data\n'}
+[4.541515] (central_point) StdoutLine: {'line': b'running install_egg_info\n'}
+[4.547937] (central_point) StdoutLine: {'line': b"removing '/home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages/central_point-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[4.549796] (central_point) StdoutLine: {'line': b'Copying ../../build/central_point/central_point.egg-info to /home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages/central_point-0.0.0-py3.10.egg-info\n'}
+[4.555570] (central_point) StdoutLine: {'line': b'running install_scripts\n'}
+[4.630858] (-) TimerEvent: {}
+[4.643579] (central_point) StdoutLine: {'line': b'Installing local_planner_node script to /home/you/Env/ros2_ws/install/central_point/lib/central_point\n'}
+[4.644498] (central_point) StdoutLine: {'line': b'Installing safety_guard script to /home/you/Env/ros2_ws/install/central_point/lib/central_point\n'}
+[4.646276] (central_point) StdoutLine: {'line': b"writing list of installed files to '/home/you/Env/ros2_ws/build/central_point/install.log'\n"}
+[4.731204] (-) TimerEvent: {}
+[4.767251] (central_point) CommandEnded: {'returncode': 0}
+[4.832301] (-) TimerEvent: {}
+[4.835480] (central_point) JobEnded: {'identifier': 'central_point', 'rc': 0}
+[4.838955] (-) EventReactorShutdown: {}

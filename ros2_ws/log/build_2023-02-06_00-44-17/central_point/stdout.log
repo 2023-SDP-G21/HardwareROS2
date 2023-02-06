@@ -1,0 +1,31 @@
+running egg_info
+creating ../../build/central_point/central_point.egg-info
+writing ../../build/central_point/central_point.egg-info/PKG-INFO
+writing dependency_links to ../../build/central_point/central_point.egg-info/dependency_links.txt
+writing entry points to ../../build/central_point/central_point.egg-info/entry_points.txt
+writing requirements to ../../build/central_point/central_point.egg-info/requires.txt
+writing top-level names to ../../build/central_point/central_point.egg-info/top_level.txt
+writing manifest file '../../build/central_point/central_point.egg-info/SOURCES.txt'
+reading manifest file '../../build/central_point/central_point.egg-info/SOURCES.txt'
+writing manifest file '../../build/central_point/central_point.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/you/Env/ros2_ws/build/central_point/build
+creating /home/you/Env/ros2_ws/build/central_point/build/lib
+creating /home/you/Env/ros2_ws/build/central_point/build/lib/central_point
+copying central_point/__init__.py -> /home/you/Env/ros2_ws/build/central_point/build/lib/central_point
+running install
+running install_lib
+creating /home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages/central_point
+copying /home/you/Env/ros2_ws/build/central_point/build/lib/central_point/__init__.py -> /home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages/central_point
+byte-compiling /home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages/central_point/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/you/Env/ros2_ws/install/central_point/share/ament_index
+creating /home/you/Env/ros2_ws/install/central_point/share/ament_index/resource_index
+creating /home/you/Env/ros2_ws/install/central_point/share/ament_index/resource_index/packages
+copying resource/central_point -> /home/you/Env/ros2_ws/install/central_point/share/ament_index/resource_index/packages
+copying package.xml -> /home/you/Env/ros2_ws/install/central_point/share/central_point
+running install_egg_info
+Copying ../../build/central_point/central_point.egg-info to /home/you/Env/ros2_ws/install/central_point/lib/python3.10/site-packages/central_point-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/home/you/Env/ros2_ws/build/central_point/install.log'
