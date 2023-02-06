@@ -1,4 +1,18 @@
-# HardwareROS2CentralPoint
+# HardwareROS2
+
+## Development Plan
+
+- [ ] central point package
+  - [ ] local planner node
+  - [ ] safety guard node
+- [ ] server package
+  - [ ] web socket node
+  - [ ] serial socket node
+- [ ] driver package
+  - [ ] ultrasonic sensor node
+  - [ ] IMU sensor node
+  - [ ] motor actuator node
+
 
 ## Command List
 
@@ -27,7 +41,7 @@ colcon build --packages-select <package_namne>
 ros2 run <package_name> <node_name>
 ```
 
-## Other
+## Other Information
 
 ```bash
 # demo
