@@ -1,0 +1,18 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from hardware_driver/action/Motor.action
+// generated code does not contain a copyright notice
+
+
+module hardware_driver {
+  module action {
+    struct Motor_Goal {
+      int32 request;
+    };
+    struct Motor_Result {
+      int32 result;
+    };
+    struct Motor_Feedback {
+      int32 feedback;
+    };
+  };
+};

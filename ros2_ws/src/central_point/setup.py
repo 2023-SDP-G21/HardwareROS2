@@ -20,8 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'local_planner_node = central_point.local_planner_node:main',
-            'safety_guard = safety_guard.safety_guard:main'
+            'local_planner_node = '+package_name+'.local_planner_node:main',
+            'safety_guard_node = '+package_name+'.safety_guard_node:main',
         ],
     },
 )

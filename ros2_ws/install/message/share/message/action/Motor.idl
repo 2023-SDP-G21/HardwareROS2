@@ -1,0 +1,24 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from message/action/Motor.action
+// generated code does not contain a copyright notice
+
+
+module message {
+  module action {
+    @verbatim (language="comment", text=
+      "goal definition")
+    struct Motor_Goal {
+      int32 order;
+    };
+    @verbatim (language="comment", text=
+      "result definition")
+    struct Motor_Result {
+      sequence<int32> sequence;
+    };
+    @verbatim (language="comment", text=
+      "feedback")
+    struct Motor_Feedback {
+      sequence<int32> partial_sequence;
+    };
+  };
+};
