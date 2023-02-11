@@ -54,7 +54,7 @@ endif()
 add_library(message::message__rosidl_generator_py SHARED IMPORTED)
 
 set_target_properties(message::message__rosidl_generator_py PROPERTIES
-  INTERFACE_LINK_LIBRARIES "message::message__rosidl_generator_c;/usr/lib/aarch64-linux-gnu/libpython3.10.so;message::message__rosidl_typesupport_c;action_msgs::action_msgs__rosidl_generator_py;builtin_interfaces::builtin_interfaces__rosidl_generator_py;unique_identifier_msgs::unique_identifier_msgs__rosidl_generator_py"
+  INTERFACE_LINK_LIBRARIES "message::message__rosidl_generator_c;/usr/lib/aarch64-linux-gnu/libpython3.10.so;message::message__rosidl_typesupport_c"
 )
 
 if(CMAKE_VERSION VERSION_LESS 2.8.12)

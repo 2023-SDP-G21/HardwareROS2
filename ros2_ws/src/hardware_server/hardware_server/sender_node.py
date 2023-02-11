@@ -1,5 +1,0 @@
-listen to some sensor info
-
-parse sensor info with message generation
-
-pass the result to socket node

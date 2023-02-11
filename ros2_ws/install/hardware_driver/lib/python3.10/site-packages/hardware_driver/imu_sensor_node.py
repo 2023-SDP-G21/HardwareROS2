@@ -15,25 +15,54 @@
 import rclpy
 from rclpy.node import Node
 
-from std_msgs.msg import String
+from interface.msg import Acceleration
 
+import serial
+import time
+import adafruit_bno055
+
+
+class IMUDriver:
+    
+    def __init__(self):
+        self.sensor = adafruit_bno055.BNO055_UART(serial.Serial("/dev/serial0"))
+
+    def acceleration(self):
+        """
+        return 3 dim acceleration
+        """
+        try:
+            result = self.sensor.acceleration
+        except Exception:
+            time.sleep(0.01)
+            result = self.acceleration()
+        if type(result) == tuple:
+            return result
+        else:
+            return self.acceleration()
+
+# imu = IMUDriver()
+# while True:
+#     print(imu.acceleration())
+#     time.sleep(1/60)
 
 class MinimalPublisher(Node):
 
     def __init__(self):
         super().__init__('imu_sensor_node')
-        self.publisher_ = self.create_publisher(String, 'topic', 10)
-        timer_period = 1/2  # seconds
+        self.publisher_ = self.create_publisher(Acceleration, 'driver/sensor/imu', 10)
+        timer_period = 1/30  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.i = 0
+        self.imu = IMUDriver()
 
     def timer_callback(self):
-        msg = String()
-        msg.data = 'Hello World: %d' % self.i
+        msg = Acceleration()
+        imu_reading = self.imu.acceleration()
+        msg.acceleration_x = imu_reading[0]
+        msg.acceleration_y = imu_reading[1]
+        msg.acceleration_z = imu_reading[2]
         self.publisher_.publish(msg)
-        self.get_logger().info('Publishing: "%s"' % msg.data)
-        self.i += 1
-
+        self.get_logger().info(f'Publishing imu value: "{msg.acceleration_x, msg.acceleration_y, msg.acceleration_z}"')
 
 def main(args=None):
     rclpy.init(args=args)

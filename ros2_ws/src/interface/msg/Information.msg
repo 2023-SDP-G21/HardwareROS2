@@ -1,0 +1,2 @@
+bool emergency_stop
+float32 velocity

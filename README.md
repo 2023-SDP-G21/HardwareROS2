@@ -2,21 +2,34 @@
 
 ## Development Plan
 
-- [ ] central point package
+- [x] central point package
   - [ ] local planner node
   - [ ] safety guard node
-- [ ] server package
+- [x] server package
   - [ ] web socket node
-  - [ ] serial socket node
-- [ ] driver package
-  - [ ] ultrasonic sensor node
-  - [ ] IMU sensor node
-  - [ ] motor actuator node
-- [ ] automate everything with ros launch
+  - [ ] reciever node
+  - [ ] sender node
+- [x] driver package
+  - [x] ultrasonic sensor node
+  - [x] IMU sensor node
+  - [x] motor actuator node
+  - [ ] lec actuator node
+  - [ ] battery level sensor node
+- [x] automate everything with ros launch
 - [ ] system testing
 
 
 ## Command List
+
+```
+# start all process
+sudo -i
+cd /home/you/Env/HardwareROS2/ros2_ws
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+
+ros2 launch launch/wheelE_launch.py
+```
 
 ```bash
 # init work space

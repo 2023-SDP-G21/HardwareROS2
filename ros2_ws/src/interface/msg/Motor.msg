@@ -1,0 +1,2 @@
+float32 motor_left_power
+float32 motor_right_power

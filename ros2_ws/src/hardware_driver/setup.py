@@ -20,9 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'motor_actuator_node_action_server = ' + package_name + '.motor_actuator_node_action_server:main',
-            'motor_actuator_node_action_client = ' + package_name + '.motor_actuator_node_action_client:main',
+            'motor_actuator_node = ' + package_name + '.motor_actuator_node:main',
             'imu_sensor_node = ' + package_name + '.imu_sensor_node:main',
+            'ultrasonic_sensor_node = ' + package_name + '.ultrasonic_sensor_node:main',
         ],
     },
 )

@@ -1,0 +1,12 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from interface/msg/Ultrasonic.msg
+// generated code does not contain a copyright notice
+
+
+module interface {
+  module msg {
+    struct Ultrasonic {
+      float distance;
+    };
+  };
+};

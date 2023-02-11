@@ -1,2 +1,2 @@
-action/Motor.action
-action/Motor.idl
+message/Motor.msg
+msg/Motor.idl
