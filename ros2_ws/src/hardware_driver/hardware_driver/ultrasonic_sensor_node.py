@@ -17,52 +17,7 @@ from rclpy.node import Node
 
 from interface.msg import Ultrasonic
 
-# Importing modules and classes
-import time
-from gpiozero import DigitalInputDevice, DigitalOutputDevice
-
-# Defining sensor class
-class UltraSonicDriver:
-  
-    def __init__(self, echo, trigger):
-        # Assingning ultrasonic sensor echo and trigger GPIO pins
-        self._usoundecho = DigitalInputDevice(echo)
-        self._usoundtrig = DigitalOutputDevice(trigger)
-        # Assigning speed of sound (cm/s)
-        self.speedofsound = 34300
-    
-    @property
-    def distance(self):
-        # Sending trigger pulse (~10 us)
-        self._usoundtrig.on()
-        time.sleep(0.000010)
-        self._usoundtrig.off()
-        # Detecting echo pulse start
-        restart_count = 0
-        while self._usoundecho.value == 0:
-            restart_count += 1
-            if restart_count == 10000:
-                # print("Restart")
-                return self.distance
-            continue
-        trise = time.perf_counter()
-        # Detecting echo pulse end
-        while self._usoundecho.value == 1:
-            continue
-        tfall = time.perf_counter()
-        # prevent error
-        if tfall == 0 or trise == 0:
-            return self.distance
-        # Returning distance (cm)
-        return 0.5 * (tfall-trise) * self.speedofsound
-
-    @distance.setter
-    def distance(self, _):
-        print('"distance" is a read only attribute.')
-
-    def __del__(self):
-        self._usoundecho.close()
-        self._usoundtrig.close()
+from .scripts.ultrasonic_driver import UltraSonicDriver
 
 class UltrasonicSensorPublisher(Node):
 

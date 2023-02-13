@@ -11,6 +11,11 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
+    py_modules=[
+        package_name+'.scripts.message',
+        package_name+'.scripts.socket',
+        package_name+'.scripts.validation',
+        ],
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='you',

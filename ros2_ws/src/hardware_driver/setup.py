@@ -11,6 +11,11 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
+    py_modules=[
+        package_name+'.scripts.ultrasonic_driver',
+        package_name+'.scripts.motor_driver',
+        package_name+'.scripts.imu_driver',
+        ],
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='you',
