@@ -46,7 +46,7 @@ class MinimalPublisher(Node):
             motor_left_power, motor_right_power = self.get_motor_break_power()
         else:    
             motor_left_power, motor_right_power = self.get_motor_power()
-        msg_motor.motor_left_power, msg_motor.motor_right_power = float(motor_left_power), float(motor_right_power)
+        msg_motor.motor_left_power, msg_motor.motor_right_power = (float(motor_left_power), float(motor_right_power))
         self.publisher.publish(msg_motor)
         self.get_logger().info(f'Publishing motor value: "{msg_motor.motor_left_power, msg_motor.motor_right_power}"')
         
@@ -54,16 +54,16 @@ class MinimalPublisher(Node):
         angle = abs(self.angle)
         if self.angle > 0: # turn left
             if angle < 90:
-                return (0.2*angle/90*self.power, self.power)
-            return (-0.2*((180-angle)/90)*self.power, -self.power)
+                return ((1-angle/90)*self.power, self.power)
+            return (-(1-(180-angle)/90)*self.power, -self.power)
         if self.angle <= 0: # turn right
             if angle < 90:
-                return (self.power, 0.2*angle/90*self.power)
-            return (-self.power, -0.2*((180-angle)/90)*self.power)
+                return (self.power, (1-angle/90)*self.power)
+            return (-self.power, -(1-(180-angle)/90)*self.power)
     
     def get_motor_break_power(self):
         # TODO considering current velocity
-        return (-0.1, -0.1)
+        return (-0.2, -0.2)
 
 
 def main(args=None):

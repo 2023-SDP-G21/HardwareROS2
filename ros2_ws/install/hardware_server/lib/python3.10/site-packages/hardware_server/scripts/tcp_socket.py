@@ -1,18 +1,18 @@
 import socket
 import struct
+import threading
 from collections import deque
 from queue import Queue
-import threading
-import random
-import time
 
 
 class TCP:
-    IP_ADDRESS = "172.20.101.231"
-    PORT = 8888
+    IP_ADDRESS = "172.20.118.23"
+    PORT = 5000
 
     def __init__(self):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        # prevents OSError Address already in use exception
+        self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.socket.bind((self.IP_ADDRESS, self.PORT))
         self.send_queue = Queue()
         self.receive_queue = deque()
@@ -33,7 +33,7 @@ class TCP:
             speed, power = struct.unpack("!ii", data)
             with self.receive_lock:
                 self.receive_queue.append((speed, power))
-                print(speed, power)
+                # print(speed, power)
 
     def receive_data(self):
         with self.receive_lock:

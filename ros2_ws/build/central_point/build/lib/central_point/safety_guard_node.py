@@ -25,7 +25,7 @@ class MinimalPublisher(Node):
             self.callback_imu, 
             10)
 
-        self.distance = 0
+        self.distance = 100 # TODO RESET ME TO 0
         self.acceleration = (0, 0, 0)
         
         self.__velocity = 0

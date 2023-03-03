@@ -13,7 +13,7 @@ setup(
     ],
     py_modules=[
         package_name+'.scripts.message',
-        package_name+'.scripts.socket',
+        package_name+'.scripts.tcp_socket',
         package_name+'.scripts.validation',
         ],
     install_requires=['setuptools'],

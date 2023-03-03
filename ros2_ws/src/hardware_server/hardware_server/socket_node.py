@@ -7,7 +7,7 @@ from rclpy.node import Node
 from interface.msg import Information, Objective
 
 from .scripts.message import MessageGeneration
-from .scripts.socket import TCP
+from .scripts.tcp_socket import TCP
 
 class MinimalPublisher(Node):
 
@@ -27,12 +27,13 @@ class MinimalPublisher(Node):
             self.callback_information, 
             10)
 
-        # TODO uncomment me
-        # self.socket = TCP()
-
+        # while True:
+        self.socket = TCP()
+        self.socket.run()
+                
         self.emergency_stop = False
-        self.velocity = 0
-        self.battery_level = 0
+        self.velocity = 3.3
+        self.battery_level = 22
         
     def callback_information(self, msg):
         self.get_logger().info(f'I heard info value: "{msg.emergency_stop}, {msg.velocity}"')
@@ -41,13 +42,13 @@ class MinimalPublisher(Node):
         
     def timer_receive_callback(self):
         msg = Objective()
-        # TODO uncomment me
-        # receive_data = self.socket.receive_data()
-        # if receive_data == []:
-        #     return
-        # power, angle = receive_data[-1]
-        # msg.power, msg.angle = (float(power), float(angle))
-        msg.power, msg.angle = (float(1), float(45))
+        receive_data = None
+        while not receive_data:
+            receive_data = self.socket.receive_data()
+
+        angle, power = receive_data[-1]
+        msg.power, msg.angle = (float(power/100), float(angle)) # power recieved is 0 - 100, we need it 0 - 1
+        # msg.power, msg.angle = (float(1), float(45))
         self.publisher.publish(msg)
         self.get_logger().info(f'Publishing objective: "{msg.power}, {msg.angle}"')
         
@@ -55,9 +56,9 @@ class MinimalPublisher(Node):
         if self.emergency_stop:
             message = MessageGeneration.generate_warning_data(1)
         else:
-            message = MessageGeneration.generate_sensor_data(self.velocity, self.battery_level)
-        # TODO uncomment me
-        # self.socket.send_data(message)
+            message = MessageGeneration.generate_sensor_data(int(self.velocity*10), self.battery_level) # convert velocity to int
+        self.get_logger().info(f'Sending info: "{self.velocity, self.battery_level}"')
+        self.socket.send_data(message)
 
 
 def main(args=None):
