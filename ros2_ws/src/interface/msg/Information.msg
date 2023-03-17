@@ -1,0 +1,3 @@
+bool emergency_stop
+bool battery_low
+float32 velocity
