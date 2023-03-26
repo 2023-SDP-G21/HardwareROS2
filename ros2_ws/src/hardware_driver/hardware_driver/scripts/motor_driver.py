@@ -107,12 +107,13 @@ if __name__ == "__main__":
     motor_left = MotorDriver(enable1=21, pwm1=16, pwm2=20)
     motor_right = MotorDriver(enable1=26, pwm1=13, pwm2=19)
 
-    motor_left.set_output(-1)
-    motor_right.set_output(1)
-    time.sleep(10)
-    # motor_left.set_output(1)
-    # motor_right.set_output(-1)
-    # time.sleep(2)
+    for _ in range(10):
+        motor_left.set_output(-1)
+        motor_right.set_output(1)
+        time.sleep(5)
+        motor_left.set_output(1)
+        motor_right.set_output(-1)
+        time.sleep(5)
 
     # Stopping motor and releasing GPIO pins
 

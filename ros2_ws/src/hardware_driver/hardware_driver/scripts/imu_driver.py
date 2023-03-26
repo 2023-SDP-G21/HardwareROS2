@@ -16,7 +16,7 @@ class IMUDriver:
         try:
             result = self.sensor.acceleration
         except Exception:
-            time.sleep(0.01)
+            time.sleep(0.5)
             result = self.acceleration()
         if type(result) == tuple:
             return result

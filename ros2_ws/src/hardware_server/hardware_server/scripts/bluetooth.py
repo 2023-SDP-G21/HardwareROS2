@@ -6,9 +6,9 @@ from collections import deque
 from queue import Queue
 from socket import error
 
-import packet
-from data import *
-from header import *
+from .packet import *
+from .data import *
+from .header import *
 
 
 class Bluetooth:
@@ -35,7 +35,7 @@ class Bluetooth:
         while self._connected:
             if not self.send_queue.empty():
                 data_type, data = self.send_queue.get()
-                packet_bytes = Packet.as_bytes(False, False, data_type, data)
+                packet_bytes = as_bytes(False, False, data_type, data)
                 try:
                     socket.send(packet_bytes)
                 except error as e:

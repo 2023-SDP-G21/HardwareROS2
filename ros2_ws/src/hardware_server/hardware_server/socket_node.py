@@ -1,6 +1,3 @@
-# server = TCP()
-# server.run()
-
 import rclpy
 import time
 from rclpy.node import Node
@@ -8,7 +5,7 @@ from rclpy.node import Node
 from interface.msg import Information, Objective, Battery
 
 from .scripts.message_generation import MessageGeneration
-from .scripts.Bluetooth import Bluetooth
+from .scripts.bluetooth import Bluetooth
 
 
 class MinimalPublisher(Node):
