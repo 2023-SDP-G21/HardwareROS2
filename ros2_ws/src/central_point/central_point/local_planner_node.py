@@ -29,8 +29,7 @@ class MinimalPublisher(Node):
         self.power = 0
 
         self.emergency_stop = False
-        self.battery_low = False
-        self.velocity = 0
+        self.speed_warning = False
 
     def callback_objective(self, msg):
         self.get_logger().info(
@@ -40,15 +39,16 @@ class MinimalPublisher(Node):
 
     def callback_information(self, msg):
         self.get_logger().info(
-            f'I heard info value: "{msg.emergency_stop}, {msg.velocity}"')
+            f'I heard info value: "{msg.emergency_stop}"')
         self.emergency_stop = msg.emergency_stop
-        self.battery_low = msg.battery_low
-        self.velocity = msg.velocity
+        self.speed_warning = msg.speed_warning
 
     def timer_callback(self):
         msg_motor = Motor()
         if self.emergency_stop:
             motor_left_power, motor_right_power = self.get_motor_break_power()
+        elif self.speed_warning:
+            motor_left_power, motor_right_power = (0, 0)
         else:
             motor_left_power, motor_right_power = self.get_motor_power()
         msg_motor.motor_left_power, msg_motor.motor_right_power = (
@@ -69,8 +69,7 @@ class MinimalPublisher(Node):
             return (-self.power, -(1-(180-angle)/90)*self.power)
 
     def get_motor_break_power(self):
-        # TODO considering current velocity
-        return (-0.2, -0.2)
+        return (-1, -1)
 
 
 def main(args=None):

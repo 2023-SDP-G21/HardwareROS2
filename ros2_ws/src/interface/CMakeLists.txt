@@ -15,7 +15,7 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Motor.msg"
-  "msg/Acceleration.msg"
+  "msg/IMU.msg"
   "msg/Ultrasonic.msg"
   "msg/Information.msg"
   "msg/Objective.msg"

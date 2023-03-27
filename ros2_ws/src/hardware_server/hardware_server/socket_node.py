@@ -2,7 +2,7 @@ import rclpy
 import time
 from rclpy.node import Node
 
-from interface.msg import Information, Objective, Battery
+from interface.msg import Information, Objective, Battery, IMU
 
 from .scripts.message_generation import MessageGeneration
 from .scripts.bluetooth import Bluetooth
@@ -29,6 +29,12 @@ class MinimalPublisher(Node):
             self.callback_information,
             10)
 
+        self.subscription_information = self.create_subscription(
+            IMU,
+            'driver/sensor/battery',
+            self.callback_imu,
+            10)
+
         self.subscription_battery = self.create_subscription(
             Battery,
             'driver/sensor/battery',
@@ -39,16 +45,18 @@ class MinimalPublisher(Node):
         self.socket = Bluetooth()
         self.socket.run()
 
-        self.emergency_stop = False
-        self.battery_low = False
+        self.information = None
         self.velocity = 0
         self.battery_level = 0
 
     def callback_information(self, msg):
         self.get_logger().info(
-            f'I heard info value: "{msg.emergency_stop}, {msg.velocity}"')
-        self.emergency_stop = msg.emergency_stop
-        self.battery_low = msg.battery_low
+            f'I heard info value: "{msg.emergency_stop}"')
+        self.information = msg
+
+    def callback_imu(self, msg):
+        self.get_logger().info(
+            f'I heard info value: "{msg.velocity}"')
         self.velocity = msg.velocity
 
     def callback_battery(self, msg):
@@ -70,10 +78,20 @@ class MinimalPublisher(Node):
             f'Publishing objective: "{msg.power}, {msg.angle}"')
 
     def timer_send_callback(self):
-        if self.emergency_stop:
+        if self.information.emergency_stop:
             message = MessageGeneration.generate_warning_data(1)
-        elif self.battery_low:
+        elif self.information.disable_component:
+            message = MessageGeneration.generate_warning_data(2)
+        elif self.information.component_connection_lost:
+            message = MessageGeneration.generate_warning_data(3)
+        elif self.information.collision_warning:
+            message = MessageGeneration.generate_warning_data(4)
+        elif self.information.battery_low:
+            message = MessageGeneration.generate_warning_data(5)
+        elif self.information.battery_critical:
             message = MessageGeneration.generate_warning_data(6)
+        elif self.information.speed_warning:
+            message = MessageGeneration.generate_warning_data(7)
         else:
             message = MessageGeneration.generate_sensor_data(
                 int(self.velocity*10), self.battery_level)  # convert velocity to int

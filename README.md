@@ -65,3 +65,8 @@ ros2 run demo_nodes_py listener
 ```
 
 Notice that ros2 doesn't have documentation about action message defining with python make, we need create a package called message with cpp make, for any customised type.
+
+if IMU sensor not working, run 
+```bash
+systemctl stop serial-getty@serial0.services
+```

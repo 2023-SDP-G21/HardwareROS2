@@ -2,7 +2,7 @@ import rclpy
 import time
 from rclpy.node import Node
 
-from interface.msg import Ultrasonic, Acceleration, Information, Battery
+from interface.msg import Ultrasonic, IMU, Information, Battery
 
 
 class MinimalPublisher(Node):
@@ -22,7 +22,7 @@ class MinimalPublisher(Node):
             10)
 
         self.subscription_imu = self.create_subscription(
-            Acceleration,
+            IMU,
             'driver/sensor/imu',
             self.callback_imu,
             10)
@@ -34,11 +34,8 @@ class MinimalPublisher(Node):
             10)
 
         self.distance = 0
-        self.acceleration = (0, 0, 0)
         self.battery_value = 0
-
-        self.__velocity = 0
-        self.__time = 0
+        self.velocity = 0
 
     def callback_ultrasonic(self, msg):
         self.distance = msg.distance
@@ -46,9 +43,9 @@ class MinimalPublisher(Node):
             f'I heard ultrasonic sensor value: "{self.distance}"')
 
     def callback_imu(self, msg):
-        self.acceleration = msg.acceleration_x, msg.acceleration_y, msg.acceleration_z
+        self.velocity = msg.velocity
         self.get_logger().info(
-            f'I heard imu sensor value: "{self.acceleration}"')
+            f'I heard imu sensor value: "{self.velocity}"')
 
     def callback_battery(self, msg):
         self.battery_value = msg.level
@@ -58,24 +55,43 @@ class MinimalPublisher(Node):
     def timer_callback(self):
         msg = Information()
         msg.emergency_stop = self.get_emergency_stop_decision()
-        msg.battery_low = self.get_low_power_decision()
-        msg.velocity = self.get_velocity()
+        msg.disable_component = self.get_disable_component_decision()
+        msg.component_connection_lost = self.get_component_connection_lost_decision()
+        msg.collision_warning = self.get_collision_warning_decision()
+        msg.battery_low = self.get_battery_low_decision()
+        msg.battery_critical = self.get_battery_critical_decision()
+        msg.speed_warning = self.get_speed_warning_decision()
+
         self.publisher.publish(msg)
         self.get_logger().info(
-            f'Publishing information: "{msg.emergency_stop}, {msg.velocity}"')
+            f'Publishing information: "{msg.emergency_stop}"')
 
     def get_emergency_stop_decision(self):
         result = self.distance < 20  # less than 20 cm would stop
         return result
 
-    def get_velocity(self):
-        time_start = self.__time
-        self.__time = time.perf_counter()
-        self.__velocity += self.acceleration[0] * (self.__time - time_start)
-        return self.__velocity
+    def get_disable_component_decision(self):
+        result = False  # TODO
+        return result
 
-    def get_low_power_decision(self):
+    def get_component_connection_lost_decision(self):
+        result = False  # TODO
+        return result
+
+    def get_collision_warning_decision(self):
+        result = self.distance < 50  # less than 50 cm would stop
+        return result
+
+    def get_battery_low_decision(self):
+        result = self.battery_value < 0.20
+        return result
+
+    def get_battery_critical_decision(self):
         result = self.battery_value < 0.05
+        return result
+
+    def get_speed_warning_decision(self):
+        result = self.velocity > 1.5
         return result
 
 

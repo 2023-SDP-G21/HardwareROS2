@@ -1,3 +1,7 @@
 bool emergency_stop
+bool disable_component
+bool component_connection_lost
+bool collision_warning
 bool battery_low
-float32 velocity
+bool battery_critical
+bool speed_warning

@@ -1,4 +1,4 @@
-from gpiozero import DigitalOutputDevice, PWMOutputDevice
+from gpiozero import DigitalOutputDevice, PWMOutputDevice  # TODO pwm for motor
 import time
 
 
