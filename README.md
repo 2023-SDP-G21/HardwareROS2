@@ -76,8 +76,9 @@ systemctl stop serial-getty@serial0.services
 1. Install Ubuntu 22.04 to raspberry pi 4+
 2. Wlan configuration
 3. Bluetooth configuration
-4. ROS2 installation
+4. ROS2 humble installation
 5. clone repository
 6. Dependency installation
-7. Test nodes with launch (comment imu sensor launch scripts)
-8. Test nodes with launch (with imu sensor launch scripts)
+7. ROS2 build
+8. Test nodes with launch (comment imu sensor launch scripts)
+9. Test nodes with launch (with imu sensor launch scripts)
