@@ -83,3 +83,4 @@ systemctl stop serial-getty@serial0.services
 8. ROS2 build
 9. Test nodes with launch (comment imu sensor launch scripts)
 10. Test nodes with launch (with imu sensor launch scripts)
+11. Configure auto start while booting with service
