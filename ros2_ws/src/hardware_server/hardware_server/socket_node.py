@@ -4,8 +4,8 @@ from rclpy.node import Node
 
 from interface.msg import Information, Objective, Battery, IMU
 
-from .scripts.message_generation import MessageGeneration
-from .scripts.bluetooth import Bluetooth
+from .HardwareServer.hardware_server.message_generation import MessageGeneration
+from .HardwareServer.hardware_server.bluetooth import Bluetooth
 
 
 class MinimalPublisher(Node):
@@ -31,7 +31,7 @@ class MinimalPublisher(Node):
 
         self.subscription_information = self.create_subscription(
             IMU,
-            'driver/sensor/battery',
+            'driver/sensor/imu',
             self.callback_imu,
             10)
 

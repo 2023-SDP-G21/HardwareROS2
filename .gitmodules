@@ -1,0 +1,3 @@
+[submodule "ros2_ws/ros2_ws/src/hardware_server/hardware_server/HardwareServer"]
+	path = ros2_ws/ros2_ws/src/hardware_server/hardware_server/HardwareServer
+	url = https://github.com/2023-SDP-G21/HardwareServer.git
