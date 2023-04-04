@@ -71,6 +71,8 @@ if IMU sensor not working, run
 systemctl stop serial-getty@serial0.services
 ```
 
+if bluetooth port 
+
 ## Installation
 
 1. Install Ubuntu 22.04 to raspberry pi 4+

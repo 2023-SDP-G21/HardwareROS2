@@ -13,7 +13,7 @@ class MinimalPublisher(Node):
     def __init__(self):
         super().__init__('local_planner')
         self.publisher = self.create_publisher(
-            Objective, 'hardware_server/socket/objective', 10)
+            Objective, 'hardware_server/socket/objective', 1)
 
         timer_period = 1/10
         self.timer_receive = self.create_timer(
@@ -27,19 +27,19 @@ class MinimalPublisher(Node):
             Information,
             'central_point/safety_guard/info',
             self.callback_information,
-            10)
+            1)
 
         self.subscription_information = self.create_subscription(
             IMU,
             'driver/sensor/imu',
             self.callback_imu,
-            10)
+            1)
 
         self.subscription_battery = self.create_subscription(
             Battery,
             'driver/sensor/battery',
             self.callback_battery,
-            10)
+            1)
 
         # while True:
         self.socket = Bluetooth()
@@ -56,47 +56,70 @@ class MinimalPublisher(Node):
 
     def callback_imu(self, msg):
         self.get_logger().info(
-            f'I heard info value: "{msg.velocity}"')
+            f'I heard velocity value: "{msg.velocity}"')
         self.velocity = msg.velocity
 
     def callback_battery(self, msg):
-        self.battery_value = msg.level
-        self.get_logger().info(f'I heard battery sensor value: "{self.level}"')
+        self.battery_level = msg.level
+        self.get_logger().info(f'I heard battery sensor value: "{msg.level}"')
 
     def timer_receive_callback(self):
         msg = Objective()
-        receive_data = None
-        while not receive_data:
-            receive_data = self.socket.receive_data()
-
-        angle, power = receive_data[-1]
-        # power recieved is 0 - 100, we need it 0 - 1
-        msg.power, msg.angle = (float(power/100), float(angle))
-        # msg.power, msg.angle = (float(1), float(45))
-        self.publisher.publish(msg)
-        self.get_logger().info(
-            f'Publishing objective: "{msg.power}, {msg.angle}"')
+        receive_data = self.socket.receive_data()
+        if receive_data:
+            angle, power = receive_data[-1]
+            # power recieved is 0 - 100, we need it 0 - 1
+            msg.power, msg.angle = (float(power/100), float(angle))
+            # msg.power, msg.angle = (float(1), float(45))
+            self.publisher.publish(msg)
+            self.get_logger().info(
+                f'Publishing objective: "{msg.power}, {msg.angle}"')
 
     def timer_send_callback(self):
+        if self.information is None:
+            return
+
         if self.information.emergency_stop:
             message = MessageGeneration.generate_warning_data(1)
-        elif self.information.disable_component:
+            self.socket.send_data(message)
+            self.get_logger().info(
+                f'Sending info: "Error code"')
+        if self.information.disable_component:
             message = MessageGeneration.generate_warning_data(2)
-        elif self.information.component_connection_lost:
+            self.socket.send_data(message)
+            self.get_logger().info(
+                f'Sending info: "Error code"')
+        if self.information.component_connection_lost:
             message = MessageGeneration.generate_warning_data(3)
-        elif self.information.collision_warning:
+            self.socket.send_data(message)
+            self.get_logger().info(
+                f'Sending info: "Error code"')
+        if self.information.collision_warning:
             message = MessageGeneration.generate_warning_data(4)
-        elif self.information.battery_low:
+            self.socket.send_data(message)
+            self.get_logger().info(
+                f'Sending info: "Error code"')
+        if self.information.battery_low:
             message = MessageGeneration.generate_warning_data(5)
-        elif self.information.battery_critical:
+            self.socket.send_data(message)
+            self.get_logger().info(
+                f'Sending info: "Error code"')
+        if self.information.battery_critical:
             message = MessageGeneration.generate_warning_data(6)
-        elif self.information.speed_warning:
+            self.socket.send_data(message)
+            self.get_logger().info(
+                f'Sending info: "Error code"')
+        if self.information.speed_warning:
             message = MessageGeneration.generate_warning_data(7)
-        else:
-            message = MessageGeneration.generate_sensor_data(
-                int(self.velocity*10), self.battery_level)  # convert velocity to int
+            self.socket.send_data(message)
+            self.get_logger().info(
+                f'Sending info: "Error code"')
+
+        message = MessageGeneration.generate_sensor_data(
+            int(self.velocity * 10), int(self.battery_level * 100) - 1)  # convert velocity, battery to int
         self.get_logger().info(
             f'Sending info: "{self.velocity, self.battery_level}"')
+
         self.socket.send_data(message)
 
 

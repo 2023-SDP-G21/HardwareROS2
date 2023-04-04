@@ -19,12 +19,14 @@ from interface.msg import Ultrasonic
 
 from .scripts.ultrasonic_driver import UltraSonicDriver
 
+
 class UltrasonicSensorPublisher(Node):
 
     def __init__(self):
         super().__init__('ultrasonic_sensor_node')
-        self.publisher_ = self.create_publisher(Ultrasonic, 'driver/sensor/ultrasonic', 10)
-        timer_period = 1/30  # seconds
+        self.publisher_ = self.create_publisher(
+            Ultrasonic, 'driver/sensor/ultrasonic', 1)
+        timer_period = 1/5  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.usensor = UltraSonicDriver(echo=6, trigger=5)
 

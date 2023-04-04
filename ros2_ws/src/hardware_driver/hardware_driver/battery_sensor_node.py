@@ -25,8 +25,8 @@ class BatterySensorPublisher(Node):
     def __init__(self):
         super().__init__('battery_sensor_node')
         self.publisher_ = self.create_publisher(
-            Battery, 'driver/sensor/battery', 100)
-        timer_period = 1/10  # seconds
+            Battery, 'driver/sensor/battery', 1)
+        timer_period = 1/1  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.bsensor_generator = BatteryLevelSensor().get_battery_level()
 

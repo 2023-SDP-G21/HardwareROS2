@@ -9,7 +9,7 @@ class MinimalPublisher(Node):
     def __init__(self):
         super().__init__('local_planner')
         self.publisher = self.create_publisher(
-            Motor, 'driver/actuator/motor', 10)
+            Motor, 'driver/actuator/motor', 1)
         timer_period = 1/10
         self.timer = self.create_timer(timer_period, self.timer_callback)
 
@@ -17,19 +17,20 @@ class MinimalPublisher(Node):
             Information,
             'central_point/safety_guard/info',
             self.callback_information,
-            10)
+            1)
 
         self.subscription_objective = self.create_subscription(
             Objective,
             'hardware_server/socket/objective',
             self.callback_objective,
-            10)
+            1)
 
         self.angle = 0
         self.power = 0
 
         self.emergency_stop = False
         self.speed_warning = False
+        self.battery_critical = False
 
     def callback_objective(self, msg):
         self.get_logger().info(
@@ -42,13 +43,16 @@ class MinimalPublisher(Node):
             f'I heard info value: "{msg.emergency_stop}"')
         self.emergency_stop = msg.emergency_stop
         self.speed_warning = msg.speed_warning
+        self.battery_critical = msg.battery_critical
 
     def timer_callback(self):
         msg_motor = Motor()
         if self.emergency_stop:
             motor_left_power, motor_right_power = self.get_motor_break_power()
-        elif self.speed_warning:
+        elif self.battery_critical:
             motor_left_power, motor_right_power = (0, 0)
+        # elif self.speed_warning:
+        #     motor_left_power, motor_right_power = (0, 0)
         else:
             motor_left_power, motor_right_power = self.get_motor_power()
         msg_motor.motor_left_power, msg_motor.motor_right_power = (
@@ -69,7 +73,7 @@ class MinimalPublisher(Node):
             return (-self.power, -(1-(180-angle)/90)*self.power)
 
     def get_motor_break_power(self):
-        return (-1, -1)
+        return (0, 0)
 
 
 def main(args=None):

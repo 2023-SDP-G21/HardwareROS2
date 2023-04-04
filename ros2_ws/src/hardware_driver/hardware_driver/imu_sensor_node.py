@@ -35,12 +35,18 @@ class MinimalPublisher(Node):
             Motor,
             'driver/actuator/motor',
             self.callback,
-            10)
+            1)
 
         self.publisher_ = self.create_publisher(
-            IMU, 'driver/sensor/imu', 10)
-        timer_period = 1/5  # seconds
+            IMU, 'driver/sensor/imu', 1)
+
+        timer_period = 1/10  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
+
+        timer_period = 1/1  # seconds
+        self.timer_publisher = self.create_timer(
+            timer_period, self.timer_publisher_callback)
+
         self.imu = IMUDriver()
         self.__velocity = 0
         self.__horizontal_a = 0
@@ -55,13 +61,13 @@ class MinimalPublisher(Node):
             (msg.motor_left_power + msg.motor_right_power) / 2
 
     def timer_callback(self):
-        msg = IMU()
-
         imu_reading = self.imu.tan_acceleration()
         # self.get_logger().info(f'Read imu reading: "{imu_reading}"')
+        self.get_velocity(*imu_reading)
 
-        msg.velocity = self.get_velocity(*imu_reading)
-
+    def timer_publisher_callback(self):
+        msg = IMU()
+        msg.velocity = self.__velocity
         self.publisher_.publish(msg)
         self.get_logger().info(f'Publishing imu value: "{msg.velocity}"')
 

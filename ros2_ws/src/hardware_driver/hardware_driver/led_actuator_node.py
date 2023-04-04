@@ -15,13 +15,13 @@ class MinimalPublisher(Node):
             Led,
             'driver/actuator/led/information',
             self.callback_information,
-            10)
+            1)
 
         self.subscription = self.create_subscription(
             Battery,
             'driver/sensor/battery',
             self.callback_battery,
-            10)
+            1)
 
         self.led_drivers = (LedDriver(17), LedDriver(27),
                             LedDriver(22))  # left first
